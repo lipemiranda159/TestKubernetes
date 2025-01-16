@@ -17,10 +17,6 @@ WORKDIR /src
 COPY ["./TestKubernets.csproj", "TestKubernets/"]
 RUN dotnet restore "./TestKubernets/TestKubernets.csproj"
 
-COPY "BeatsUnion.Common.HealthChecks.dll" "./TestKubernets/BeatsUnion.Common.HealthChecks.dll"
-COPY "BeatsUnion.Common.ServiceConfigurations.dll" "./TestKubernets/BeatsUnion.Common.ServiceConfigurations.dll"
-
-
 COPY . .
 WORKDIR "/src/TestKubernets"
 RUN dotnet build "./TestKubernets.csproj" -c $BUILD_CONFIGURATION -o /app/build
